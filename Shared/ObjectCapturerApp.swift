@@ -7,12 +7,22 @@
 //
 
 import SwiftUI
+import Foundation
+import AppKit
 
 @main
 struct ObjectCapturerApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelecate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
         }
+    }
+}
+
+class AppDelegate: NSObject, NSApplicationDelegate {
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
+        return true
     }
 }
