@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7B35773326155F6900EC1A97 /* cmdLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B35773226155F6900EC1A97 /* cmdLine.swift */; };
 		7B35773B261560A700EC1A97 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7B35773A261560A700EC1A97 /* ArgumentParser */; };
+		BF90C12B2732C92800E278B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF90C1292732C31400E278B0 /* Localizable.strings */; };
 		BFCDB90E272BEEBA00250635 /* ObjectCapturerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDB8FF272BEEB900250635 /* ObjectCapturerApp.swift */; };
 		BFCDB90F272BEEBA00250635 /* ObjectCapturerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDB8FF272BEEB900250635 /* ObjectCapturerApp.swift */; };
 		BFCDB910272BEEBA00250635 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDB900272BEEB900250635 /* ContentView.swift */; };
@@ -40,6 +41,8 @@
 		7B35772F26155F6900EC1A97 /* HelloPhotogrammetry */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HelloPhotogrammetry; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B35773226155F6900EC1A97 /* cmdLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cmdLine.swift; sourceTree = "<group>"; };
 		7B357763261566B200EC1A97 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		BF90C1282732C31400E278B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF90C12A2732C31700E278B0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BFCDB8FF272BEEB900250635 /* ObjectCapturerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCapturerApp.swift; sourceTree = "<group>"; };
 		BFCDB900272BEEB900250635 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFCDB901272BEEBA00250635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 		7B35772626155F6900EC1A97 = {
 			isa = PBXGroup;
 			children = (
+				BF90C1292732C31400E278B0 /* Localizable.strings */,
 				BFCDB91B272BEF2600250635 /* ObjectCapturer (iOS).entitlements */,
 				7B357763261566B200EC1A97 /* README.md */,
 				7B35773126155F6900EC1A97 /* HelloPhotogrammetry */,
@@ -246,7 +250,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
+				"zh-Hans",
 			);
 			mainGroup = 7B35772626155F6900EC1A97;
 			packageReferences = (
@@ -277,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFCDB913272BEEBA00250635 /* Assets.xcassets in Resources */,
+				BF90C12B2732C92800E278B0 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,7 +303,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nxcrun agvtool next-version -all\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# xcrun agvtool next-version -all\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -332,6 +337,18 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BF90C1292732C31400E278B0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF90C1282732C31400E278B0 /* en */,
+				BF90C12A2732C31700E278B0 /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7B35773426155F6900EC1A97 /* Debug */ = {
@@ -487,7 +504,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "ObjectCapturer (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 76;
 				DEVELOPMENT_TEAM = L7XRJ79BCH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -520,7 +537,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "ObjectCapturer (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 76;
 				DEVELOPMENT_TEAM = L7XRJ79BCH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -555,7 +572,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 76;
 				DEVELOPMENT_TEAM = L7XRJ79BCH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -584,7 +601,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 67;
+				CURRENT_PROJECT_VERSION = 76;
 				DEVELOPMENT_TEAM = L7XRJ79BCH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;

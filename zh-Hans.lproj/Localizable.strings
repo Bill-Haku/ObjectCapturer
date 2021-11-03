@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  ObjectCapturer
+
+  Created by Bill Haku on 2021/11/3.
+  Copyright © 2021 Apple. All rights reserved.
+*/
+
+"Select path" = "选择路径";
+"Start" = "开始";
+"Choose source path" = "选择源路径";
+"Choose destination path" = "选择目标路径";
+"Output Quality" = "输出画质";
+"Medium" = "中";
+"Preview" = "预览";
+"Reduced" = "低";
+"Full" = "全画质";
+"Raw" = "原生画质";
+"Success" = "成功";
+"Working..." = "处理中...";
+"ObjectCapturer" = "照相建模器";
+"Output file name" = "输出文件名";

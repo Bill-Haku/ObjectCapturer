@@ -27,7 +27,11 @@ struct ContentView: View {
                         .scaledToFit()
                         .frame(height: 100)
                         .padding()
-                    Text(sourcePath ?? "Choose source path")
+                    if sourcePath == nil {
+                        Text("Choose source path")
+                    } else {
+                        Text(sourcePath!)
+                    }
                     Button("Select path") {
                         let panel = NSOpenPanel()
                         panel.allowsMultipleSelection = false
@@ -48,7 +52,11 @@ struct ContentView: View {
                         .scaledToFit()
                         .frame(height: 100)
                         .padding()
-                    Text(destinationPath ?? "Choose destination path")
+                    if destinationPath == nil {
+                        Text("Choose destination path")
+                    } else {
+                        Text(destinationPath!)
+                    }
                     HStack {
                         Button("Select path") {
                             let panel = NSOpenPanel()
@@ -128,5 +136,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environment(\.locale, .init(identifier: "zh-Hans"))
     }
 }
