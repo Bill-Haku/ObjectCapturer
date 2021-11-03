@@ -8,17 +8,12 @@
 
 import SwiftUI
 import RealityKit
-//import HelloPhotogrammetry
-
 
 struct ContentView: View {
     @State var sourcePath: String? = nil
     @State var destinationPath: String? = nil
-//    @State var quality: PhotogrammetrySession.Request.Detail = .medium
-    @ObservedObject var status = Status()
     @State var progress: Double = 0.0
-    @State var isWorking = false
-    @State var isSuccess = false
+    @State var myStatus: CurrentStatus = .isWaiting
     var qualityTypes = ["Preview", "Reduced", "Medium", "Full", "Raw"]
     @State var selectedQuality = 2
     
@@ -30,8 +25,9 @@ struct ContentView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(height: 100)
+                        .padding()
                     Text(sourcePath ?? "Choose source path")
-                    Button("select path") {
+                    Button("Select path") {
                         let panel = NSOpenPanel()
                         panel.allowsMultipleSelection = false
                         panel.canChooseFiles = false
@@ -41,6 +37,7 @@ struct ContentView: View {
                             sourcePath = sourcePath!.replacingOccurrences(of: "file://", with: "")
                         }
                     }
+                    .disabled(myStatus == .isWorking)
                 }
                 .padding()
                 .frame(width: 250)
@@ -49,8 +46,9 @@ struct ContentView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(height: 100)
+                        .padding()
                     Text(destinationPath ?? "Choose destination path")
-                    Button("select path") {
+                    Button("Select path") {
                         let panel = NSOpenPanel()
                         panel.allowsMultipleSelection = false
                         panel.canChooseFiles = false
@@ -61,6 +59,7 @@ struct ContentView: View {
                             destinationPath! += "output.usdz"
                         }
                     }
+                    .disabled(myStatus == .isWorking)
                 }
                 .frame(width: 250)
                 .padding()
@@ -71,45 +70,44 @@ struct ContentView: View {
                 }
             }
             .frame(width: 300)
-//            .pickerStyle(SegmentedPickerStyle())
             .padding()
-            Button(isWorking ? "Working" : "Start") {
+            Button(myStatus == .isWorking ? "Working" : "Start") {
                 if sourcePath != nil && destinationPath != nil {
                     DispatchQueue.global().async {
                         switch selectedQuality {
                         case 1:
-                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: .preview, progress: $progress, isSuccess: $isSuccess, isWorking: $isWorking)
+                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: .preview, progress: $progress, myStatus: $myStatus)
                             core.run()
                         case 2:
-                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: .reduced, progress: $progress, isSuccess: $isSuccess, isWorking: $isWorking)
+                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: .reduced, progress: $progress, myStatus: $myStatus)
                             core.run()
                         case 3:
-                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: .medium, progress: $progress, isSuccess: $isSuccess, isWorking: $isWorking)
+                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: .medium, progress: $progress, myStatus: $myStatus)
                             core.run()
                         case 4:
-                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: .full, progress: $progress, isSuccess: $isSuccess, isWorking: $isWorking)
+                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: .full, progress: $progress, myStatus: $myStatus)
                             core.run()
                         case 5:
-                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: .raw, progress: $progress, isSuccess: $isSuccess, isWorking: $isWorking)
+                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: .raw, progress: $progress, myStatus: $myStatus)
                             core.run()
                         default:
-                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: nil, progress: $progress, isSuccess: $isSuccess, isWorking: $isWorking)
+                            let core = HelloPhotogrammetry(input: sourcePath!, outputStr: destinationPath!, outputDetail: nil, progress: $progress, myStatus: $myStatus)
                             core.run()
                         }
-                        
-                        
-                        isWorking = true
+                        myStatus = .isWorking
                     }
                 }
             }
-            .disabled(isWorking)
-            if isWorking {
+            .padding()
+            .disabled(myStatus == .isWorking)
+            if myStatus == .isWorking {
                 ProgressView("Working...", value: progress, total: 1)
                     .padding()
             }
-            if isSuccess {
+            if myStatus == .isSuccess {
                 Text("Success!")
-                    .font(.title)
+                    .font(.title3)
+                    .padding()
             }
         }
         

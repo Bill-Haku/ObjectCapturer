@@ -29,55 +29,17 @@ struct HelloPhotogrammetry {
     var outputStr: String
     var outputDetail: Request.Detail? = nil
     @Binding var progress: Double
-    @Binding var isSuccess: Bool
-    @Binding var isWorking: Bool
-    @ObservedObject var status = Status()
-    
-//    init(input: String, outputStr: String, outputDetail: QualityType) {
-//        self.input = input
-//        self.outputStr = outputStr
-//        switch outputDetail {
-//        case .preview:
-//            self.outputDetail = .preview
-//        case .reduced:
-//            self.outputDetail = .reduced
-//        case .medium:
-//            self.outputDetail = .medium
-//        case .full:
-//            self.outputDetail = .full
-//        case .raw:
-//            self.outputDetail = .raw
-//        }
-//    }
+    @Binding var myStatus: CurrentStatus
     
     typealias Configuration = PhotogrammetrySession.Configuration
     typealias Request = PhotogrammetrySession.Request
     
     public static let configuration = CommandConfiguration(
         abstract: "Reconstructs 3D USDZ model from a folder of images.")
-    
-//    @Argument(help: "The local input file folder of images.")
     var inputFolder: String = ""
-    
-//    @Argument(help: "Full path to the USDZ output file.")
     var outputFilename: String = ""
-    
-//    @Option(name: .shortAndLong,
-//            parsing: .next,
-//            help: "detail {preview, reduced, medium, full, raw}  Detail of output model in terms of mesh size and texture size .",
-//            transform: Request.Detail.init)
     var detail: Request.Detail?
-    
-//    @Option(name: [.customShort("o"), .long],
-//            parsing: .next,
-//            help: "sampleOrdering {unordered, sequential}  Setting to sequential may speed up computation if images are captured in a spatially sequential pattern.",
-//            transform: Configuration.SampleOrdering.init)
     var sampleOrdering: Configuration.SampleOrdering?
-    
-//    @Option(name: .shortAndLong,
-//            parsing: .next,
-//            help: "featureSensitivity {normal, high}  Set to high if the scanned object does not contain a lot of discernible structures, edges or textures.",
-//            transform: Configuration.FeatureSensitivity.init)
     var featureSensitivity: Configuration.FeatureSensitivity?
     
     /// The main run loop entered at the end of the file.
@@ -106,9 +68,7 @@ struct HelloPhotogrammetry {
                     switch output {
                         case .processingComplete:
                             logger.log("Processing is complete!")
-                            isSuccess = true
-                            isWorking = false
-                        //                            Foundation.exit(0)
+                            myStatus = .isSuccess
                         case .requestError(let request, let error):
                             logger.error("Request \(String(describing: request)) had an error: \(String(describing: error))")
                         case .requestComplete(let request, let result):
@@ -116,7 +76,6 @@ struct HelloPhotogrammetry {
                         case .requestProgress(let request, let fractionComplete):
                             HelloPhotogrammetry.handleRequestProgress(request: request,
                                                                       fractionComplete: fractionComplete)
-//                            status.progress = fractionComplete
                             progress = fractionComplete
                         case .inputComplete:  // data ingestion only!
                             logger.log("Data ingestion is complete.  Beginning processing...")
@@ -262,14 +221,9 @@ enum QualityType: String, Equatable, CaseIterable {
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
 
-//public struct Status {
-//    static var isWorking: Bool = false
-//    static var isSuccess: Bool = false
-//    static var progress: Double = 0.0
-//}
-
-class Status: ObservableObject {
-    @Published var isWorking = false
-    @Published var isSuccess = false
-    @Published var progress: Double = 0.0
+enum CurrentStatus {
+    case isWorking
+    case isSuccess
+    case isFail
+    case isWaiting
 }
