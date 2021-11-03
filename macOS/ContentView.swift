@@ -73,15 +73,16 @@ struct ContentView: View {
                     Text(qualityTypes[i])
                 }
             }
+            .disabled(myStatus == .isWorking)
             .frame(width: 300)
             .padding()
             Button(myStatus == .isWorking ? "Working" : "Start") {
-                if outputName != "" {
-                    destinationPath! += "\(outputName).usdz"
-                } else {
-                    destinationPath! += "output.usdz"
-                }
                 if sourcePath != nil && destinationPath != nil {
+                    if outputName != "" {
+                        destinationPath! += "\(outputName).usdz"
+                    } else {
+                        destinationPath! += "output.usdz"
+                    }
                     DispatchQueue.global().async {
                         switch selectedQuality {
                         case 1:
