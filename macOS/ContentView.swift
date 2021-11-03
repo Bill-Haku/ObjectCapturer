@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var myStatus: CurrentStatus = .isWaiting
     var qualityTypes = ["Preview", "Reduced", "Medium", "Full", "Raw"]
     @State var selectedQuality = 2
+    @State var outputName = ""
     
     var body: some View {
         VStack {
@@ -48,18 +49,21 @@ struct ContentView: View {
                         .frame(height: 100)
                         .padding()
                     Text(destinationPath ?? "Choose destination path")
-                    Button("Select path") {
-                        let panel = NSOpenPanel()
-                        panel.allowsMultipleSelection = false
-                        panel.canChooseFiles = false
-                        panel.canChooseDirectories = true
-                        if panel.runModal() == .OK {
-                            self.destinationPath = panel.url?.absoluteString
-                            destinationPath = destinationPath!.replacingOccurrences(of: "file://", with: "")
-                            destinationPath! += "output.usdz"
+                    HStack {
+                        Button("Select path") {
+                            let panel = NSOpenPanel()
+                            panel.allowsMultipleSelection = false
+                            panel.canChooseFiles = false
+                            panel.canChooseDirectories = true
+                            if panel.runModal() == .OK {
+                                self.destinationPath = panel.url?.absoluteString
+                                destinationPath = destinationPath!.replacingOccurrences(of: "file://", with: "")
+                            }
                         }
+                        .disabled(myStatus == .isWorking)
+                        TextField("Output file name", text: $outputName)
+                        .disabled(myStatus == .isWorking)
                     }
-                    .disabled(myStatus == .isWorking)
                 }
                 .frame(width: 250)
                 .padding()
@@ -72,6 +76,11 @@ struct ContentView: View {
             .frame(width: 300)
             .padding()
             Button(myStatus == .isWorking ? "Working" : "Start") {
+                if outputName != "" {
+                    destinationPath! += "\(outputName).usdz"
+                } else {
+                    destinationPath! += "output.usdz"
+                }
                 if sourcePath != nil && destinationPath != nil {
                     DispatchQueue.global().async {
                         switch selectedQuality {
