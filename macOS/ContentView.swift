@@ -1,9 +1,9 @@
 //
 //  ContentView.swift
-//  Shared
+//  macOS
 //
 //  Created by Bill Haku on 2021/10/29.
-//  Copyright © 2021 Apple. All rights reserved.
+//  Copyright © 2021 BillHaku All rights reserved.
 //
 
 import SwiftUI
@@ -20,9 +20,18 @@ struct ContentView: View {
     @State var localError: ErrorTypes = .noError
     @State var showAlert: Bool = false
     @State var errorInfo: String = ""
+    var donateViewTitle = "Donate me!"
     
     var body: some View {
         VStack {
+            HStack {
+                Spacer()
+                Button("Donate me!") {
+                    DonateView().openInWindow(title: donateViewTitle, sender: self)
+                }
+            }
+            .frame(width: 500)
+            .padding(5)
             HStack {
                 VStack {
                     Image(systemName: sourcePath == nil ? "folder.fill.badge.plus" : "folder.fill")

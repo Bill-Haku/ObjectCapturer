@@ -7,11 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B35773326155F6900EC1A97 /* cmdLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B35773226155F6900EC1A97 /* cmdLine.swift */; };
-		7B35773B261560A700EC1A97 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = 7B35773A261560A700EC1A97 /* ArgumentParser */; };
 		BF90C12B2732C92800E278B0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF90C1292732C31400E278B0 /* Localizable.strings */; };
+		BF90C12E2733EBF100E278B0 /* DonateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF90C12C2733EBBD00E278B0 /* DonateView.swift */; };
+		BF90C12F2733F30400E278B0 /* ObjectCapturerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDB8FF272BEEB900250635 /* ObjectCapturerApp.swift */; };
 		BFCDB90E272BEEBA00250635 /* ObjectCapturerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDB8FF272BEEB900250635 /* ObjectCapturerApp.swift */; };
-		BFCDB90F272BEEBA00250635 /* ObjectCapturerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDB8FF272BEEB900250635 /* ObjectCapturerApp.swift */; };
 		BFCDB910272BEEBA00250635 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDB900272BEEB900250635 /* ContentView.swift */; };
 		BFCDB911272BEEBA00250635 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCDB900272BEEB900250635 /* ContentView.swift */; };
 		BFCDB912272BEEBA00250635 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCDB901272BEEBA00250635 /* Assets.xcassets */; };
@@ -22,27 +21,13 @@
 		BFCDB928272C007100250635 /* ArgumentParser in Frameworks */ = {isa = PBXBuildFile; productRef = BFCDB927272C007100250635 /* ArgumentParser */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		7B35772D26155F6900EC1A97 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		3AACFD8D2CBD36EDA66607F9 /* LICENSE.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		662F77A0D8C65CF208ABB917 /* ACKNOWLEDGEMENTS.txt */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = ACKNOWLEDGEMENTS.txt; sourceTree = "<group>"; };
-		7365C4E25C9381B7EBEE3701 /* SampleCode.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = SampleCode.xcconfig; path = Configuration/SampleCode.xcconfig; sourceTree = "<group>"; };
-		7B35772F26155F6900EC1A97 /* HelloPhotogrammetry */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = HelloPhotogrammetry; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B35773226155F6900EC1A97 /* cmdLine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = cmdLine.swift; sourceTree = "<group>"; };
 		7B357763261566B200EC1A97 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		BF90C1282732C31400E278B0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BF90C12A2732C31700E278B0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		BF90C12C2733EBBD00E278B0 /* DonateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonateView.swift; sourceTree = "<group>"; };
 		BFCDB8FF272BEEB900250635 /* ObjectCapturerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectCapturerApp.swift; sourceTree = "<group>"; };
 		BFCDB900272BEEB900250635 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BFCDB901272BEEBA00250635 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -54,14 +39,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		7B35772C26155F6900EC1A97 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7B35773B261560A700EC1A97 /* ArgumentParser in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFCDB903272BEEBA00250635 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -90,25 +67,15 @@
 			path = LICENSE;
 			sourceTree = "<group>";
 		};
-		3FA622068595B839DAC9BC34 /* Configuration */ = {
-			isa = PBXGroup;
-			children = (
-				7365C4E25C9381B7EBEE3701 /* SampleCode.xcconfig */,
-			);
-			name = Configuration;
-			sourceTree = "<group>";
-		};
 		7B35772626155F6900EC1A97 = {
 			isa = PBXGroup;
 			children = (
 				BF90C1292732C31400E278B0 /* Localizable.strings */,
 				BFCDB91B272BEF2600250635 /* ObjectCapturer (iOS).entitlements */,
 				7B357763261566B200EC1A97 /* README.md */,
-				7B35773126155F6900EC1A97 /* HelloPhotogrammetry */,
 				BFCDB8FE272BEEB900250635 /* Shared */,
 				BFCDB90C272BEEBA00250635 /* macOS */,
 				7B35773026155F6900EC1A97 /* Products */,
-				3FA622068595B839DAC9BC34 /* Configuration */,
 				13329AE4E82D15B3A35CBB4C /* LICENSE */,
 				BFCDB924272C006B00250635 /* Frameworks */,
 			);
@@ -117,19 +84,10 @@
 		7B35773026155F6900EC1A97 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7B35772F26155F6900EC1A97 /* HelloPhotogrammetry */,
 				BFCDB906272BEEBA00250635 /* ObjectCapturer.app */,
 				BFCDB90B272BEEBA00250635 /* ObjectCapturer.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		7B35773126155F6900EC1A97 /* HelloPhotogrammetry */ = {
-			isa = PBXGroup;
-			children = (
-				7B35773226155F6900EC1A97 /* cmdLine.swift */,
-			);
-			path = HelloPhotogrammetry;
 			sourceTree = "<group>";
 		};
 		BFCDB8FE272BEEB900250635 /* Shared */ = {
@@ -146,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				BFCDB900272BEEB900250635 /* ContentView.swift */,
+				BF90C12C2733EBBD00E278B0 /* DonateView.swift */,
 				BFCDB90D272BEEBA00250635 /* macOS.entitlements */,
 			);
 			path = macOS;
@@ -161,26 +120,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		7B35772E26155F6900EC1A97 /* HelloPhotogrammetry */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 7B35773626155F6900EC1A97 /* Build configuration list for PBXNativeTarget "HelloPhotogrammetry" */;
-			buildPhases = (
-				7B35772B26155F6900EC1A97 /* Sources */,
-				7B35772C26155F6900EC1A97 /* Frameworks */,
-				7B35772D26155F6900EC1A97 /* CopyFiles */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = HelloPhotogrammetry;
-			packageProductDependencies = (
-				7B35773A261560A700EC1A97 /* ArgumentParser */,
-			);
-			productName = HelloPhotogrammetry;
-			productReference = 7B35772F26155F6900EC1A97 /* HelloPhotogrammetry */;
-			productType = "com.apple.product-type.tool";
-		};
 		BFCDB905272BEEBA00250635 /* ObjectCapturer (iOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFCDB914272BEEBA00250635 /* Build configuration list for PBXNativeTarget "ObjectCapturer (iOS)" */;
@@ -233,9 +172,6 @@
 				LastUpgradeCheck = 1300;
 				ORGANIZATIONNAME = BillHaku;
 				TargetAttributes = {
-					7B35772E26155F6900EC1A97 = {
-						CreatedOnToolsVersion = 12.5;
-					};
 					BFCDB905272BEEBA00250635 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -260,7 +196,6 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				7B35772E26155F6900EC1A97 /* HelloPhotogrammetry */,
 				BFCDB905272BEEBA00250635 /* ObjectCapturer (iOS) */,
 				BFCDB90A272BEEBA00250635 /* ObjectCapturer (macOS) */,
 			);
@@ -308,14 +243,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		7B35772B26155F6900EC1A97 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7B35773326155F6900EC1A97 /* cmdLine.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		BFCDB902272BEEBA00250635 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -330,9 +257,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF90C12F2733F30400E278B0 /* ObjectCapturerApp.swift in Sources */,
+				BF90C12E2733EBF100E278B0 /* DonateView.swift in Sources */,
 				BFCDB911272BEEBA00250635 /* ContentView.swift in Sources */,
 				BFCDB923272BFEEB00250635 /* CoreProcess.swift in Sources */,
-				BFCDB90F272BEEBA00250635 /* ObjectCapturerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,7 +281,6 @@
 /* Begin XCBuildConfiguration section */
 		7B35773426155F6900EC1A97 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7365C4E25C9381B7EBEE3701 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -415,7 +342,6 @@
 		};
 		7B35773526155F6900EC1A97 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7365C4E25C9381B7EBEE3701 /* SampleCode.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -468,34 +394,6 @@
 			};
 			name = Release;
 		};
-		7B35773726155F6900EC1A97 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7365C4E25C9381B7EBEE3701 /* SampleCode.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L7XRJ79BCH;
-				PRODUCT_BUNDLE_IDENTIFIER = com.billhaku.HelloPhotogrammetry;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		7B35773826155F6900EC1A97 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7365C4E25C9381B7EBEE3701 /* SampleCode.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "Mac Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L7XRJ79BCH;
-				PRODUCT_BUNDLE_IDENTIFIER = com.billhaku.HelloPhotogrammetry;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
 		BFCDB915272BEEBA00250635 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -504,7 +402,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "ObjectCapturer (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 92;
+				CURRENT_PROJECT_VERSION = 119;
 				DEVELOPMENT_TEAM = L7XRJ79BCH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -525,7 +423,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -537,7 +435,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = "ObjectCapturer (iOS).entitlements";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 92;
+				CURRENT_PROJECT_VERSION = 119;
 				DEVELOPMENT_TEAM = L7XRJ79BCH;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -558,7 +456,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -568,15 +466,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 92;
+				CURRENT_PROJECT_VERSION = 119;
 				DEVELOPMENT_TEAM = L7XRJ79BCH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 BillHaku. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -597,15 +497,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 92;
+				CURRENT_PROJECT_VERSION = 119;
 				DEVELOPMENT_TEAM = L7XRJ79BCH;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 BillHaku. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -629,15 +531,6 @@
 			buildConfigurations = (
 				7B35773426155F6900EC1A97 /* Debug */,
 				7B35773526155F6900EC1A97 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		7B35773626155F6900EC1A97 /* Build configuration list for PBXNativeTarget "HelloPhotogrammetry" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				7B35773726155F6900EC1A97 /* Debug */,
-				7B35773826155F6900EC1A97 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -674,11 +567,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		7B35773A261560A700EC1A97 /* ArgumentParser */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 7B357739261560A700EC1A97 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;
-			productName = ArgumentParser;
-		};
 		BFCDB925272C006B00250635 /* ArgumentParser */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 7B357739261560A700EC1A97 /* XCRemoteSwiftPackageReference "swift-argument-parser" */;

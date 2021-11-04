@@ -1,9 +1,9 @@
 //
 //  Coreprocess.swift
-//  HelloPhotogrammetry
+//  
 //
 //  Created by Bill Haku on 2021/10/29.
-//  Copyright © 2021 Apple. All rights reserved.
+//  Copyright © 2021 BillHaku All rights reserved.
 //
 /*
 See LICENSE folder for this sample’s licensing information.
@@ -36,11 +36,6 @@ struct HelloPhotogrammetry {
     typealias Configuration = PhotogrammetrySession.Configuration
     typealias Request = PhotogrammetrySession.Request
     
-//    public static let configuration = CommandConfiguration(
-//        abstract: "Reconstructs 3D USDZ model from a folder of images.")
-//    var inputFolder: String = ""
-//    var outputFilename: String = ""
-//    var detail: Request.Detail?
     var sampleOrdering: Configuration.SampleOrdering?
     var featureSensitivity: Configuration.FeatureSensitivity?
     
@@ -50,7 +45,6 @@ struct HelloPhotogrammetry {
         let configuration = makeConfigurationFromArguments()
         logger.log("Using configuration: \(String(describing: configuration))")
         
-        // Try to create the session, or else exit.
         var maybeSession: PhotogrammetrySession? = nil
         do {
             maybeSession = try PhotogrammetrySession(input: inputFolderUrl,
@@ -88,7 +82,7 @@ struct HelloPhotogrammetry {
                     case .requestProgress(let request, let fractionComplete):
                         HelloPhotogrammetry.handleRequestProgress(request: request, fractionComplete: fractionComplete)
                         progress = fractionComplete
-                    case .inputComplete:  // data ingestion only!
+                    case .inputComplete: 
                         logger.log("Data ingestion is complete.  Beginning processing...")
                     case .invalidSample(let id, let reason):
                         logger.warning("Invalid Sample! id=\(id)  reason=\"\(reason)\"")
