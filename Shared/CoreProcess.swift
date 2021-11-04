@@ -227,3 +227,9 @@ enum CurrentStatus {
     case isFail
     case isWaiting
 }
+
+enum ErrorTypes {
+    case noError
+    case srcNil
+    case desNil
+}

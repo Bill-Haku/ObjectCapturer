@@ -20,3 +20,6 @@
 "Working..." = "处理中...";
 "ObjectCapturer" = "照相建模器";
 "Output file name" = "输出文件名";
+"OK" = "好";
+"Output path is not set" = "输出路径未指定";
+"Source path is not set" = "源路径未指定";

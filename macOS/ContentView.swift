@@ -17,6 +17,8 @@ struct ContentView: View {
     var qualityTypes = ["Preview", "Reduced", "Medium", "Full", "Raw"]
     @State var selectedQuality = 2
     @State var outputName = ""
+    @State var localError: ErrorTypes = .noError
+    @State var showAlert: Bool = false
     
     var body: some View {
         VStack {
@@ -85,7 +87,13 @@ struct ContentView: View {
             .frame(width: 300)
             .padding()
             Button(myStatus == .isWorking ? "Working" : "Start") {
-                if sourcePath != nil && destinationPath != nil {
+                if sourcePath == nil {
+                    showAlert.toggle()
+                    localError = .srcNil
+                } else if destinationPath == nil {
+                    showAlert.toggle()
+                    localError = .desNil
+                } else {
                     if outputName != "" {
                         destinationPath! += "\(outputName).usdz"
                     } else {
@@ -118,6 +126,16 @@ struct ContentView: View {
             }
             .padding()
             .disabled(myStatus == .isWorking)
+            .alert(isPresented: $showAlert) {
+                switch localError {
+                case .noError:
+                    return Alert(title: Text("Undefined error"), dismissButton: .default(Text("OK")))
+                case .desNil:
+                    return Alert(title: Text("Output path is not set"), dismissButton: .default(Text("OK")))
+                case .srcNil:
+                    return Alert(title: Text("Source path is not set"), dismissButton: .default(Text("OK")))
+                }
+            }
             if myStatus == .isWorking {
                 ProgressView("Working...", value: progress, total: 1)
                     .padding()
