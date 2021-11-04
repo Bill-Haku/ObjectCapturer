@@ -16,10 +16,11 @@
 "Reduced" = "低";
 "Full" = "全画质";
 "Raw" = "原生画质";
-"Success" = "成功";
+"Success" = "成功完成";
 "Working..." = "处理中...";
 "ObjectCapturer" = "照相建模器";
 "Output file name" = "输出文件名";
 "OK" = "好";
 "Output path is not set" = "输出路径未指定";
 "Source path is not set" = "源路径未指定";
+"Working" = "处理中";

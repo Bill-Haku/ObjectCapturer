@@ -30,15 +30,17 @@ struct HelloPhotogrammetry {
     var outputDetail: Request.Detail? = nil
     @Binding var progress: Double
     @Binding var myStatus: CurrentStatus
+    @Binding var errorInfo: String
+    @Binding var showAlert: Bool
     
     typealias Configuration = PhotogrammetrySession.Configuration
     typealias Request = PhotogrammetrySession.Request
     
-    public static let configuration = CommandConfiguration(
-        abstract: "Reconstructs 3D USDZ model from a folder of images.")
-    var inputFolder: String = ""
-    var outputFilename: String = ""
-    var detail: Request.Detail?
+//    public static let configuration = CommandConfiguration(
+//        abstract: "Reconstructs 3D USDZ model from a folder of images.")
+//    var inputFolder: String = ""
+//    var outputFilename: String = ""
+//    var detail: Request.Detail?
     var sampleOrdering: Configuration.SampleOrdering?
     var featureSensitivity: Configuration.FeatureSensitivity?
     
@@ -56,44 +58,58 @@ struct HelloPhotogrammetry {
             logger.log("Successfully created session.")
         } catch {
             logger.error("Error creating session: \(String(describing: error))")
-            Foundation.exit(1)
+            showAlert = true
+            myStatus = .isFail
+            errorInfo = "Error creating session: \(String(describing: error))"
+            return
         }
         guard let session = maybeSession else {
-            Foundation.exit(1)
+            myStatus = .isFail
+            showAlert = true
+            errorInfo = "error: create session fail"
+            return
         }
         
         let waiter = Task {
             do {
                 for try await output in session.outputs {
                     switch output {
-                        case .processingComplete:
-                            logger.log("Processing is complete!")
-                            myStatus = .isSuccess
-                        case .requestError(let request, let error):
-                            logger.error("Request \(String(describing: request)) had an error: \(String(describing: error))")
-                        case .requestComplete(let request, let result):
-                            HelloPhotogrammetry.handleRequestComplete(request: request, result: result)
-                        case .requestProgress(let request, let fractionComplete):
-                            HelloPhotogrammetry.handleRequestProgress(request: request,
-                                                                      fractionComplete: fractionComplete)
-                            progress = fractionComplete
-                        case .inputComplete:  // data ingestion only!
-                            logger.log("Data ingestion is complete.  Beginning processing...")
-                        case .invalidSample(let id, let reason):
-                            logger.warning("Invalid Sample! id=\(id)  reason=\"\(reason)\"")
-                        case .skippedSample(let id):
-                            logger.warning("Sample id=\(id) was skipped by processing.")
-                        case .automaticDownsampling:
-                            logger.warning("Automatic downsampling was applied!")
-                        case .processingCancelled:
-                            logger.warning("Processing was cancelled.")
-                        @unknown default:
-                            logger.error("Output: unhandled message: \(output.localizedDescription)")
+                    case .processingComplete:
+                        logger.log("Processing is complete!")
+                    case .requestError(let request, let error):
+                        logger.error("Request \(String(describing: request)) had an error: \(String(describing: error))")
+                        myStatus = .isFail
+                        showAlert.toggle()
+                        errorInfo = "error: \(String(describing: error))"
+                    case .requestComplete(let request, let result):
+                        HelloPhotogrammetry.handleRequestComplete(request: request, result: result)
+                        myStatus = .isSuccess
+                        showAlert = true
+                    case .requestProgress(let request, let fractionComplete):
+                        HelloPhotogrammetry.handleRequestProgress(request: request, fractionComplete: fractionComplete)
+                        progress = fractionComplete
+                    case .inputComplete:  // data ingestion only!
+                        logger.log("Data ingestion is complete.  Beginning processing...")
+                    case .invalidSample(let id, let reason):
+                        logger.warning("Invalid Sample! id=\(id)  reason=\"\(reason)\"")
+                    case .skippedSample(let id):
+                        logger.warning("Sample id=\(id) was skipped by processing.")
+                    case .automaticDownsampling:
+                        logger.warning("Automatic downsampling was applied!")
+                    case .processingCancelled:
+                        logger.warning("Processing was cancelled.")
+                    @unknown default:
+                        logger.error("Output: unhandled message: \(output.localizedDescription)")
+                        myStatus = .isFail
+                        showAlert = true
+                        errorInfo = "unhandled message: \(output.localizedDescription)"
                     }
                 }
             } catch {
                 logger.error("Output: ERROR = \(String(describing: error))")
-                Foundation.exit(0)
+                myStatus = .isFail
+                showAlert = true
+                errorInfo = "ERROR = \(String(describing: error))"
             }
         }
         
@@ -111,7 +127,9 @@ struct HelloPhotogrammetry {
                 RunLoop.main.run()
             } catch {
                 logger.critical("Process got error: \(String(describing: error))")
-                Foundation.exit(1)
+                myStatus = .isFail
+                showAlert = true
+                errorInfo = "Process got error: \(String(describing: error))"
             }
         }
     }
@@ -232,4 +250,5 @@ enum ErrorTypes {
     case noError
     case srcNil
     case desNil
+    case coreFail
 }
